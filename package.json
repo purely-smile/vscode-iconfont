@@ -1,37 +1,92 @@
 {
-    "name": "iconfont",
-    "displayName": "iconfont",
-    "description": "iconfont管理",
-    "version": "0.0.1",
-    "publisher": "yoyo612",
-    "engines": {
-        "vscode": "^1.41.0"
+  "name": "iconfont",
+  "displayName": "iconfont",
+  "description": "iconfont管理",
+  "version": "0.0.1",
+  "publisher": "yoyo612",
+  "engines": {
+    "vscode": "^1.41.0"
+  },
+  "repository": {
+    "url": "git@github.com:purely-smile/vscode-iconfont.git",
+    "type": "git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:iconfontList"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "iconfont",
+          "title": "管理iconfont",
+          "icon": "media/icon.svg"
+        }
+      ]
     },
-    "categories": [
-        "Other"
+    "views": {
+      "iconfont": [
+        {
+          "id": "iconfontList",
+          "name": "iconfont列表"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "iconfont.refreshEntry",
+        "title": "刷新",
+        "icon": "media/refresh.svg"
+      },
+      {
+        "command": "iconfont.copy",
+        "title": "复制",
+        "icon": "media/copy.svg"
+      }
     ],
-    "activationEvents": [
-        "onCommand:extension.sayHello"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
-        }]
+    "menus": {
+      "view/title": [
+        {
+          "command": "iconfont.refreshEntry",
+          "when": "view === iconfontList",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "iconfont.copy",
+          "when": "view == iconfontList && viewItem == icon",
+          "group": "inline"
+        }
+      ]
     },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
-        "tslint": "^5.8.0",
-        "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+    "configuration": {
+      "title": "iconfont",
+      "properties": {
+        "iconfont.projectId": {
+          "type": "string",
+          "default": "",
+          "description": "请输入iconfont project id"
+        }
+      }
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6",
+    "tslint": "^5.8.0",
+    "@types/node": "^7.0.43",
+    "@types/mocha": "^2.2.42"
+  }
 }
