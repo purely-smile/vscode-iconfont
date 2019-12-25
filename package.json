@@ -15,7 +15,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onView:iconfontList"
+    "onView:iconfontList",
+    "onCommand:iconfont.setProject"
   ],
   "main": "./out/extension",
   "contributes": {
@@ -46,6 +47,10 @@
         "command": "iconfont.copy",
         "title": "复制",
         "icon": "media/copy.svg"
+      },
+      {
+        "command": "iconfont.setProject",
+        "title": "set iconfont projectId"
       }
     ],
     "menus": {

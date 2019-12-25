@@ -23,7 +23,11 @@ class IconfontItem extends vscode.TreeItem {
 
   get iconPath() {
     const { font_class, show_svg } = this.item;
-    const filepath = path.resolve("/tmp", `${font_class}.svg`);
+    const { projectId } = vscode.workspace.getConfiguration("iconfont");
+    const filepath = path.resolve(
+      `/tmp/iconfont/${projectId}/`,
+      `${font_class}.svg`
+    );
     if (!fs.existsSync(filepath)) {
       fs.writeFileSync(filepath, show_svg);
     }
@@ -65,6 +69,18 @@ export function activate(context: vscode.ExtensionContext) {
   // 注册命令
   vscode.commands.registerCommand("iconfont.refreshEntry", () => {
     provider.refresh();
+  });
+
+  // 注册设置project命令
+  vscode.commands.registerCommand("iconfont.setProject", async () => {
+    const input = await vscode.window.showInputBox({
+      placeHolder: "请输入iconfont projectId"
+    });
+    if (!input || !/^\d+$/.test(input)) {
+      throw new Error("projectId 不能为空且只能是纯数值");
+    }
+    vscode.workspace.getConfiguration("iconfont").update("projectId", input);
+    vscode.window.showInformationMessage("配置成功，请重启编辑器");
   });
 
   vscode.commands.registerCommand("iconfont.copy", (node: IconfontItem) => {
