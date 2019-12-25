@@ -7,7 +7,12 @@ import { getIconfontDetail } from "./get-iconfont-detail";
 // iconfont 单个元素
 export class IconfontItem extends vscode.TreeItem {
   constructor(
-    public item: { name: string; font_class: string; show_svg: string }
+    public item: {
+      name: string;
+      font_class: string;
+      show_svg: string;
+      unicode: string;
+    }
   ) {
     super(item.name, vscode.TreeItemCollapsibleState.None);
     this.label = item.name;

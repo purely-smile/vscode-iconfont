@@ -45,7 +45,7 @@
         "icon": "media/refresh.svg"
       },
       {
-        "command": "iconfont.copy",
+        "command": "iconfont.copy.font_class",
         "title": "复制",
         "icon": "media/copy.svg"
       },
@@ -54,12 +54,17 @@
         "title": "set iconfont projectId"
       },
       {
-        "command": "iconfont.copy.svg",
+        "command": "iconfont.copy.show_svg",
         "title": "复制svg"
       },
       {
         "command": "iconfont.show.svg",
-        "title": "查看svg"
+        "title": "查看svg",
+        "icon": "media/show.svg"
+      },
+      {
+        "command": "iconfont.copy.unicode",
+        "title": "复制unicode"
       }
     ],
     "menus": {
@@ -72,16 +77,21 @@
       ],
       "view/item/context": [
         {
-          "command": "iconfont.copy",
+          "command": "iconfont.copy.font_class",
           "when": "view == iconfontList && viewItem == icon",
           "group": "inline"
         },
         {
-          "command": "iconfont.copy.svg",
+          "command": "iconfont.show.svg",
+          "when": "view == iconfontList",
+          "group": "inline"
+        },
+        {
+          "command": "iconfont.copy.show_svg",
           "when": "view == iconfontList"
         },
         {
-          "command": "iconfont.show.svg",
+          "command": "iconfont.copy.unicode",
           "when": "view == iconfontList"
         }
       ]
