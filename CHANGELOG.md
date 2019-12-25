@@ -1,7 +1,7 @@
-# Change Log
-All notable changes to the "iconfont" extension will be documented in this file.
+# 0.0.3 / 2019-12-25
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+==================
 
-## [Unreleased]
-- Initial release
+1. 新增插件 icon 图标
+2. 支持刷新功能
+3. 增加文档说明

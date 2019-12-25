@@ -2,6 +2,8 @@ import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
 import { getIconfontDetail } from "./get-iconfont-detail";
+import { setProjectId } from "./configs";
+import { getIconfontDir, removeIconfontDir } from "./file-manage";
 
 // iconfont 单个元素
 class IconfontItem extends vscode.TreeItem {
@@ -23,11 +25,8 @@ class IconfontItem extends vscode.TreeItem {
 
   get iconPath() {
     const { font_class, show_svg } = this.item;
-    const { projectId } = vscode.workspace.getConfiguration("iconfont");
-    const filepath = path.resolve(
-      `/tmp/iconfont/${projectId}/`,
-      `${font_class}.svg`
-    );
+    const dir = getIconfontDir();
+    const filepath = path.resolve(dir, `${font_class}.svg`);
     if (!fs.existsSync(filepath)) {
       fs.writeFileSync(filepath, show_svg);
     }
@@ -68,18 +67,16 @@ export function activate(context: vscode.ExtensionContext) {
 
   // 注册命令
   vscode.commands.registerCommand("iconfont.refreshEntry", () => {
+    removeIconfontDir();
     provider.refresh();
   });
 
   // 注册设置project命令
   vscode.commands.registerCommand("iconfont.setProject", async () => {
     const input = await vscode.window.showInputBox({
-      placeHolder: "请输入iconfont projectId"
+      placeHolder: "请输入iconfont projectId（参考插件首页文档获取id）"
     });
-    if (!input || !/^\d+$/.test(input)) {
-      throw new Error("projectId 不能为空且只能是纯数值");
-    }
-    vscode.workspace.getConfiguration("iconfont").update("projectId", input);
+    setProjectId(input);
     vscode.window.showInformationMessage("配置成功，请重启编辑器");
   });
 
