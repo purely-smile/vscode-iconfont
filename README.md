@@ -18,6 +18,10 @@
 4. 项目中`command+shift+p`: 输入 `set iconfont`，找到命令，回车，输入项目的 iconfont Id
 5. 重启项目查看效果
 
+## 配置
+
+1. `iconfont.projectId`: 配置 iconfont 的项目 id，必须配置
+
 ## 已知问题
 
 1. 登录引导，目前下载`iconfont`需要具备登录状态，新用户需要手动在终端执行以下命令来同步登录状态：`download-iconfont -p <项目id>`

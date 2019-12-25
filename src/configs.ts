@@ -1,10 +1,11 @@
 import * as vscode from "vscode";
 
+const getConfigs = () => vscode.workspace.getConfiguration("iconfont");
+
 /**
  * 获取projectid
  */
-export const getProjectId = () =>
-  vscode.workspace.getConfiguration("iconfont").get("projectId");
+export const getProjectId = () => getConfigs().get("projectId");
 
 /**
  * 设置iconfont id
@@ -14,5 +15,5 @@ export const setProjectId = (id?: string) => {
   if (!id || !/^\d+$/.test(id)) {
     throw new Error("projectId 不能为空且只能是纯数值");
   }
-  vscode.workspace.getConfiguration("iconfont").update("projectId", id);
+  getConfigs().update("projectId", id);
 };

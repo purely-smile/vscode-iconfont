@@ -7,7 +7,7 @@ import { getProjectId } from "./configs";
 /**
  * 获取iconfont详情
  */
-export const getIconfontDetail = () => {
+export const getIconfontDetail = (): IconfontProjectInfo => {
   const projectId = getProjectId();
   const dir = getIconfontDir();
   const output = path.resolve(dir, "iconfont-detail.json");
