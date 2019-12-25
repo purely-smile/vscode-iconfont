@@ -15,7 +15,7 @@ export class IconfontItem extends vscode.TreeItem {
     }
   ) {
     super(item.name, vscode.TreeItemCollapsibleState.None);
-    this.label = item.name;
+    this.label = item.font_class;
   }
 
   get tooltip() {
@@ -24,7 +24,7 @@ export class IconfontItem extends vscode.TreeItem {
   }
 
   get description() {
-    return this.item.font_class;
+    return this.item.name;
   }
 
   get iconPath() {
