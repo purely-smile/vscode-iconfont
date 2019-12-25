@@ -52,6 +52,14 @@
       {
         "command": "iconfont.setProject",
         "title": "set iconfont projectId"
+      },
+      {
+        "command": "iconfont.copy.svg",
+        "title": "复制svg"
+      },
+      {
+        "command": "iconfont.show.svg",
+        "title": "查看svg"
       }
     ],
     "menus": {
@@ -67,6 +75,14 @@
           "command": "iconfont.copy",
           "when": "view == iconfontList && viewItem == icon",
           "group": "inline"
+        },
+        {
+          "command": "iconfont.copy.svg",
+          "when": "view == iconfontList"
+        },
+        {
+          "command": "iconfont.show.svg",
+          "when": "view == iconfontList"
         }
       ]
     },

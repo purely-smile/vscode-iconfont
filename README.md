@@ -28,3 +28,9 @@ TODO
 2. 集成 icon 智能提示
 3. 集成更新`iconfont`功能
 4. 自动安装依赖，增加容错提示。
+
+## 参考资料:
+
+1. [VSCode 扩展开发(十) TreeView](http://lilpig.site/post/vscode-ext10)
+2. [tree-view-sample](https://github.com/Microsoft/vscode-extension-samples/tree/master/tree-view-sample)
+3. [vscode-todo-highlight](https://github.com/wayou/vscode-todo-highlight)

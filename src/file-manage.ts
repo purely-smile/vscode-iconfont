@@ -10,7 +10,7 @@ import { getProjectId } from "./configs";
 export const getIconfontDir = () => {
   const projectId = getProjectId();
   if (!projectId) {
-    throw new Error("请参考文档配置iconfont project");
+    throw new Error("请参考文档配置iconfont projectId");
   }
   return path.resolve(`/tmp/iconfont/${projectId}`);
 };
