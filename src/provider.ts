@@ -12,13 +12,14 @@ export class IconfontItem extends vscode.TreeItem {
       font_class: string;
       show_svg: string;
       unicode: string;
+      fontClass: string;
     },
     prefix: string
   ) {
     super(item.name, vscode.TreeItemCollapsibleState.None);
     this.label = item.font_class;
     // font_class 补全prefix，方便复制操作
-    this.item.font_class = [prefix, this.item.font_class].join("");
+    this.item.fontClass = [prefix, this.item.font_class].join("");
   }
 
   get tooltip() {

@@ -16,7 +16,12 @@
   ],
   "activationEvents": [
     "onView:iconfontList",
-    "onCommand:iconfont.setProject"
+    "onCommand:iconfont.setProject",
+    "onLanguage:vue",
+    "onLanguage:typescript",
+    "onLanguage:javascript",
+    "onLanguage:css",
+    "onLanguage:html"
   ],
   "main": "./out/extension",
   "icon": "media/icon.png",
@@ -45,7 +50,7 @@
         "icon": "media/refresh.svg"
       },
       {
-        "command": "iconfont.copy.font_class",
+        "command": "iconfont.copy.fontClass",
         "title": "复制",
         "icon": "media/copy.svg"
       },
@@ -77,7 +82,7 @@
       ],
       "view/item/context": [
         {
-          "command": "iconfont.copy.font_class",
+          "command": "iconfont.copy.fontClass",
           "when": "view == iconfontList && viewItem == icon",
           "group": "inline"
         },

@@ -6,7 +6,7 @@ import { IconfontItem } from "./provider";
  * @param type 字段名称
  */
 export const registerCopyCommand = (
-  type: "font_class" | "unicode" | "show_svg"
+  type: "fontClass" | "unicode" | "show_svg"
 ) => {
   // 复制svg数据
   vscode.commands.registerCommand(

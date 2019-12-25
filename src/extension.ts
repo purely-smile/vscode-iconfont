@@ -4,14 +4,17 @@ import { removeIconfontDir } from "./file-manage";
 import { IconfontProvider, IconfontItem } from "./provider";
 import { previewSvg } from "./preview-svg";
 import { registerCopyCommand } from "./register-copy-command";
+import { deleteIconfontDetailCache } from "./get-iconfont-detail";
+import { renderIconInFile } from "./render-icon-in-file";
 
-export function activate() {
+export function activate(context: vscode.ExtensionContext) {
   const provider = new IconfontProvider();
   vscode.window.registerTreeDataProvider("iconfontList", provider);
 
   // 注册刷新命令
   vscode.commands.registerCommand("iconfont.refreshEntry", () => {
     removeIconfontDir();
+    deleteIconfontDetailCache();
     provider.refresh();
   });
 
@@ -25,7 +28,7 @@ export function activate() {
   });
 
   // 注册复制class命令
-  registerCopyCommand("font_class");
+  registerCopyCommand("fontClass");
 
   // 复制svg数据
   registerCopyCommand("show_svg");
@@ -38,4 +41,7 @@ export function activate() {
     const { show_svg } = node.item;
     previewSvg(show_svg);
   });
+
+  // icon 图标回显功能
+  renderIconInFile(context);
 }
