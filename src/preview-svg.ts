@@ -1,17 +1,21 @@
 import * as vscode from "vscode";
 
-const panel = vscode.window.createWebviewPanel(
-  "show svg",
-  "查看svg",
-  vscode.ViewColumn.One,
-  {}
-);
+let _cachePanel: null | vscode.WebviewPanel;
 
 /**
  * 预览svg
  * @param svg svg数据
  */
 export const previewSvg = (svg: string) => {
+  const panel =
+    _cachePanel ||
+    vscode.window.createWebviewPanel(
+      "show svg",
+      "查看svg",
+      vscode.ViewColumn.One,
+      {}
+    );
+  _cachePanel = panel;
   panel.webview.html = `<!DOCTYPE html>
   <html lang="en">
   <head>
