@@ -2,7 +2,7 @@
   "name": "iconfont",
   "displayName": "iconfont",
   "description": "iconfont管理",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "yoyo612",
   "engines": {
     "vscode": "^1.41.0"
