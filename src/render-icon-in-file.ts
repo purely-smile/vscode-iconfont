@@ -23,12 +23,17 @@ const render = () => {
     return null;
   }
   const reg = getReg();
+  const {
+    project: { prefix }
+  } = getIconfontDetail();
   const { lineCount } = editor.document;
   new Array(lineCount).fill(null).forEach((val, index) => {
     const line = editor.document.lineAt(index);
     const matcher = line.text.match(reg);
     if (matcher) {
-      const font_class = matcher[0].replace(/^icon/, "");
+      // FIXME: prefix正则转义
+      const replaceReg = new RegExp(`^${prefix}`);
+      const font_class = matcher[0].replace(replaceReg, "");
       const dir = getIconfontDir();
       const filepath = path.resolve(dir, `${font_class}.svg`);
       const decorations: vscode.DecorationOptions[] = [
