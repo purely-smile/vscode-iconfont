@@ -10,6 +10,8 @@
 2. 支持复制`icon_class`
 3. 支持刷新功能
 4. 支持`icon`回显功能
+5. 支持智能输入提示
+6. 支持的语言: `vue`、`html`、`javascript`、`typescript`、`css`
 
 ## 安装
 
@@ -26,12 +28,13 @@
 ## 已知问题
 
 1. 登录引导，目前下载`iconfont`需要具备登录状态，新用户需要手动在终端执行以下命令来同步登录状态：`download-iconfont -p <项目id>`
+2. 由于`completions`限制，目前无法支持`icon`图标的展示
 
 TODO
 
-1. 集成 icon 智能提示
-2. 集成更新`iconfont`功能
-3. 自动安装依赖，增加容错提示。
+1. 集成更新`iconfont`功能
+2. 自动安装依赖，增加容错提示。
+3. 智能输入提示增加 icon 图标
 
 ## 参考资料:
 
@@ -41,3 +44,4 @@ TODO
 4. [插件开发（四）：Decorations 装饰器](https://github.com/whdlut/vscode/blob/master/35%20!%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9ADecorations%20%E8%A3%85%E9%A5%B0%E5%99%A8.md)
 5. [vscode-iconfont-preview](https://github.com/jasonslyvia/vscode-iconfont-preview/blob/master/src/extension.ts)
 6. [decorator-sample](https://github.com/microsoft/vscode-extension-samples/blob/master/decorator-sample/src/extension.ts#L70)
+7. [completions-sample](https://github.com/microsoft/vscode-extension-samples/blob/master/completions-sample/src/extension.ts)

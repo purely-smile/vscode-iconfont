@@ -6,6 +6,7 @@ import { previewSvg } from "./preview-svg";
 import { registerCopyCommand } from "./register-copy-command";
 import { deleteIconfontDetailCache } from "./get-iconfont-detail";
 import { renderIconInFile } from "./render-icon-in-file";
+import { autoSuggestion } from "./auto-suggestion";
 
 export function activate(context: vscode.ExtensionContext) {
   const provider = new IconfontProvider();
@@ -44,4 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   // icon 图标回显功能
   renderIconInFile(context);
+
+  // 智能输入提示
+  autoSuggestion(context);
 }
