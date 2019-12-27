@@ -108,6 +108,11 @@
           "type": "string",
           "default": "",
           "description": "请输入iconfont project id"
+        },
+        "iconfont.highlight.bgColor": {
+          "type": "string",
+          "default": "#FFCCCC",
+          "description": "iconfont 高亮背景色"
         }
       }
     }

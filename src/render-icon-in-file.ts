@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import * as path from "path";
 import { getIconfontDetail } from "./get-iconfont-detail";
 import { getIconfontDir } from "./file-manage";
+import { getHighlightBgColor } from "./configs";
 
 /**
  * 获取匹配font_class正则
@@ -15,6 +16,18 @@ const getReg = (): RegExp => {
   return new RegExp(str);
 };
 
+/**
+ * 获取高亮装饰样式
+ */
+const getHightlightDecorationType = () => {
+  const bgColor = getHighlightBgColor();
+  return vscode.window.createTextEditorDecorationType({
+    overviewRulerColor: bgColor,
+    overviewRulerLane: vscode.OverviewRulerLane.Full,
+    backgroundColor: bgColor
+  });
+};
+
 const cache: Record<string, vscode.TextEditorDecorationType> = {};
 
 const render = () => {
@@ -26,6 +39,8 @@ const render = () => {
   const {
     project: { prefix }
   } = getIconfontDetail();
+  const hightlightDecorationType = getHightlightDecorationType();
+  const hightlightRanges: vscode.DecorationOptions[] = [];
   const { lineCount } = editor.document;
   new Array(lineCount).fill(null).forEach((val, index) => {
     const line = editor.document.lineAt(index);
@@ -57,6 +72,15 @@ const render = () => {
         textEditorDecorationType,
         decorations
       );
+
+      // 添加高亮位置
+      hightlightRanges.push({
+        range: new vscode.Range(
+          new vscode.Position(index, matcher.index),
+          new vscode.Position(index, matcher.index + matcher[0].length)
+        ),
+        hoverMessage: font_class
+      });
     } else {
       if (cache[index]) {
         cache[index].dispose();
@@ -64,6 +88,12 @@ const render = () => {
       }
     }
   });
+
+  // 高亮设置
+  vscode.window.activeTextEditor.setDecorations(
+    hightlightDecorationType,
+    hightlightRanges
+  );
 };
 
 export const renderIconInFile = (context: vscode.ExtensionContext) => {

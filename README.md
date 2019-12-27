@@ -9,7 +9,7 @@
 1. vscode 内部管理当前项目的`iconfont`
 2. 支持复制`icon_class`
 3. 支持刷新功能
-4. 支持`icon`回显功能
+4. 支持`icon`回显功能和背景高亮（颜色可配置）
 5. 支持智能输入提示
 6. 支持的语言: `vue`、`html`、`javascript`、`typescript`、`css`
 
@@ -24,6 +24,7 @@
 ## 配置
 
 1. `iconfont.projectId`: 配置 iconfont 的项目 id，必须配置
+2. `iconfont.highlight.bgColor`: icon 高亮背景色配置。参考 https://www.bootcss.com/p/websafecolors/
 
 ## 已知问题
 

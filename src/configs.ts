@@ -17,3 +17,8 @@ export const setProjectId = (id?: string) => {
   }
   getConfigs().update("projectId", id);
 };
+
+/**
+ * 获取高亮背景色
+ */
+export const getHighlightBgColor = () => getConfigs().get("highlight.bgColor");
